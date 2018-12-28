@@ -1,0 +1,21 @@
+language: node_js
+node_js:
+- '8.10.0'
+env:
+- CXX=g++-4.8
+addons:
+  apt:
+    sources:
+    - ubuntu-toolchain-r-test
+    packages:
+    - g++-4.8
+cache: yarn
+script:
+- yarn build --release
+deploy:
+  provider: heroku
+  api_key:
+    secure: VsMrQknn1P8/OcHt+ijNfTM1Kkm0a6zKoaIhYeoirpZ6y4XvaxQZ95LP7kHemS0SO5sD20IY8Dw6U/xVfWVmlGam64L4EdRmlzwb5+QLpIImqRvfjZptANr1i6SEr3Lr34oBatERSSLK8xS15/hjyKhlsn9Ft+y8GlD6hTsuAYGwhZ0BZOoRnwAoPz3Hmyvv0UVfhJbGjWjVj3l6tmdkTW8cJRg+gagxhzodAIgcleNxmaZWWauBtupdpr19SgC3qRG3Bk/xlhEE4sLNv8Viiq2IsJNyok7K5mnIALfvfYWNMlgi7XWnDhh9EZFkX3Uy2kLL4m1gqz7zNnBG7s+BUCXR5NEtiRqWAYfBrg/tW2807oUJSgqp0AZ9rskq3Fyh3M2vrxZlvIF0MmIuvxYlK3eey/q+u/S0PecYEmp739vyhj0NtNn7cHxTekNs3QkD4kYu0YufId/3Bv6J5A39g9ZraMZEstdMVB6gQke1o22CIwg/BBvIIM5JdS5SZ/HvgglC5W/8ERE6JXbUcXbMtVo0rdS7HNxyf7xwxBaqu2ZE3MSeevmbY8OPzgndcwZBiPiZcKtIc1SMAelU9u1vexbsBMhwzHxuEbUg/ZxITu8OiY8MTCK+JJB3MOhQTkY9Orv3yKm6gYWywwOvVRMQv20m30aRrxS/+BxboicJ3uE=
+  app: enchanted-data
+  run:
+  - yarn start
